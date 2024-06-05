@@ -21,15 +21,21 @@
       top: 0;
     }
 
-    .slide.active {
+    .slide.active-right {
       display: block;
       right: -500px;
-      z-index: 1;
+      /* z-index: 1; */
+    }
+
+    .slide.active-left {
+      display: block;
+      left: -500px;
+      /* z-index: 1; */
     }
 
     .slide.previous {
       display: block;
-      z-index: 0;
+      /* z-index: 0; */
     }
 
     .navigation {
@@ -80,20 +86,33 @@
       updateDots();
     });
 
-    function animate(slide, range, x){
+    function animate(slide, range, direction, x){
       let start = Date.now();
       let timer = setInterval( () => {
         let timePassed = Date.now() - start;
 
-        switch(x){
-          case 1: 
-          slide.style.marginRight = timePassed / range + 'px';
+        switch (direction){
+          case 'right':
+            switch(x){
+              case 1: 
+              slide.style.marginRight = timePassed / range + 'px';
+              break;
+              case 2:
+              slide.style.right = timePassed / range + 'px';
+              break;
+          }
           break;
-          case 2:
-          slide.style.right = timePassed / range + 'px';
+          case 'left':
+            switch(x){
+              case 1: 
+              slide.style.marginLeft = timePassed / range + 'px';
+              break;
+              case 2:
+              slide.style.left = timePassed / range + 'px';
+              break;
+          }
           break;
         }
-
         if (timePassed >= 1000) {
         clearInterval(timer);
         return;
@@ -101,24 +120,41 @@
       }, 10);
     }
 
-    function showSlide(n) {
+    function showSlide(n, direction) {
       if (isAnimating || n === currentSlide) {
         return;
       }
 
       isAnimating = true;
 
-      slides[currentSlide].classList.remove('active');
+      slides[currentSlide].classList.remove('active-right');
+      slides[currentSlide].classList.remove('active-left');
       slides[currentSlide].classList.add('previous');
       slides[currentSlide].style.marginRight = null;
       slides[currentSlide].style.right = null;
       slides[n].style.marginRight = null;
       slides[n].style.right = null;
-      slides[n].classList.add('active');
+      slides[currentSlide].style.marginLeft = null;
+      slides[currentSlide].style.left = null;
+      slides[n].style.marginLeft = null;
+      slides[n].style.left = null;
 
-      animate(slides[n], 2, 1);
-      animate(slides[currentSlide], 2, 2);
-
+      if (direction === 'left' || (n < currentSlide && !(currentSlide - n > 1))){
+        animate(slides[n], 2, 'left', 1);
+        animate(slides[currentSlide], 2, 'left', 2);
+        slides[n].classList.add('active-left');
+      }
+      if (direction === 'right' || (n > currentSlide)){
+        animate(slides[n], 2, 'right', 1);
+        animate(slides[currentSlide], 2, 'right', 2);
+        slides[n].classList.add('active-right');
+      }
+      if (direction === undefined && currentSlide - n > 1){
+        animate(slides[n], 2, 'left', 1);
+        animate(slides[currentSlide], 2, 'left', 2);
+        slides[n].classList.add('active-left');
+      }
+      
       setTimeout(() => {
         slides[currentSlide].classList.remove('previous');
         currentSlide = n;
@@ -128,8 +164,19 @@
     }
 
     function changeSlide(n) {
+      let direction = 0;
+
+      switch (n){
+        case 1:
+          direction = 'right';
+          break;
+        case -1:
+          direction = 'left';
+          break;
+      }
+
       const nextSlide = (currentSlide + n + slides.length) % slides.length;
-      showSlide(nextSlide);
+      showSlide(nextSlide, direction);
     }
 
     function updateDots() {
