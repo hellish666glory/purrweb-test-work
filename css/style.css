@@ -411,6 +411,10 @@ h1, h2, h3, h4, h5, h6, p, ul{
     color: var(--greyscale-07);
 }
 
+.decline .cookie-btn__text{
+    color: var(--greyscale-00);
+}
+
 .cookie__btn::after{
     content: "";
     display: block;
@@ -917,6 +921,10 @@ h1, h2, h3, h4, h5, h6, p, ul{
     height: 362px;
 }
 
+.article-text-block{
+    z-index: 1;
+}
+
 .why-budss-articles__line:nth-child(1) > .articles-blocks:nth-child(1){
     padding: 36px 40px 62px;
     max-width: 733px;
@@ -1115,6 +1123,7 @@ h1, h2, h3, h4, h5, h6, p, ul{
     display: flex;
     flex-direction: row;
     gap: 90px;
+    align-items: baseline;
 }
 
 .footer{
@@ -1127,6 +1136,12 @@ h1, h2, h3, h4, h5, h6, p, ul{
     align-items: center;
     justify-content: space-between;
     padding-bottom: 30px;
+}
+
+.footer-for-links-block{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
 }
 
 .footer-for-links{
@@ -1146,8 +1161,10 @@ h1, h2, h3, h4, h5, h6, p, ul{
     margin-right: 40px;
 }
 
-.store-link:not(:last-child){
-    margin-right: 20px;
+.stores-block{
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
 .footer-bottom{
@@ -1249,6 +1266,11 @@ h1, h2, h3, h4, h5, h6, p, ul{
         width: 100%;
     }
 
+    .thank-you__modal{
+        padding: 20px 4px;
+        text-align: center;
+    }
+
     .burger-menu{
         display: block;
     }
@@ -1306,12 +1328,11 @@ h1, h2, h3, h4, h5, h6, p, ul{
         position: fixed;
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
         padding: 0 16px;
         width: 100%;
         height: 100%;
         background-color: var(--greyscale-01);
-        top: -100%; left: 0; right: 0; bottom: 0;
+        left: 0; right: 0; bottom: 0;
         overflow: hidden;
         transition: all 0.3s ease-in-out;
         transform: scale(0);
@@ -1319,6 +1340,8 @@ h1, h2, h3, h4, h5, h6, p, ul{
     }
 
     .mobile-btn{
+        margin-bottom: 177px;
+        margin-top: 196px;
         color: var(--greyscale-07);
     }
 
@@ -1602,6 +1625,7 @@ h1, h2, h3, h4, h5, h6, p, ul{
 
     .your-brands-container{
         flex-direction: column;
+        padding-left: 16px;
     }
 
     .your-brands-block{
@@ -1698,15 +1722,6 @@ h1, h2, h3, h4, h5, h6, p, ul{
 
     .footer-for-links-block{
         display: none;
-    }
-
-    .store-link:not(:last-child){
-        margin-bottom: 20px;
-        margin-right: 0;
-    }
-
-    .store-link:not(:last-child) .store-img{
-        margin-bottom: 20px;
     }
 
     .footer-btn-block{
