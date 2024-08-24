@@ -36,17 +36,17 @@
                 <label for="name" class="modal_label">
                     <span class="label__text">Name <span class="required-star">*</span></span>
                     <input placeholder="Enter name" type="text" id="name" class="modal__input input-reset required">
-                    <div class="alert-block"><span class="invalid-text visually-hidden">This field is required.</span></div>
+                    <span class="alert-block"><span class="invalid-text visually-hidden">This field is required.</span></span>
                 </label>
                 <label for="email" class="modal_label">
                     <span class="label__text">Email <span class="required-star">*</span></span>
                     <input placeholder="Enter email" type="email" id="email" class="modal__input input-reset required">
-                    <div class="alert-block"><span class="invalid-text visually-hidden">This field is required.</span></div>
+                    <span class="alert-block"><span class="invalid-text visually-hidden">This field is required.</span></span>
                 </label>
                 <label for="phone" class="modal_label">
                     <span class="label__text">Phone number <span class="required-star">*</span></span>
-                    <input placeholder="+7 (999) 999-99-99" type="tel" id="phone" class="modal__input input-reset required">
-                    <div class="alert-block"><span class="invalid-text visually-hidden">This field is required.</span></div>
+                    <input placeholder="+7 (999) 999-99-99" data-mask="+7 (000) 000-00-00" pattern="\\+7 ([0-9]{3}\) [0-9]{3}[\-][0-9]{2}[\-][0-9]{2}" type="tel" id="phone" class="modal__input input-reset required">
+                    <span class="alert-block"><span class="invalid-text visually-hidden">This field is required.</span></span>
                 </label>
                 <label for="company" class="modal_label">
                     <span class="label__text">Company</span>
@@ -84,7 +84,7 @@
                 </a>
                 <button class="btn-reset header__btn contact-sales-btn contact-sales-btn-load"><span class="contact-sales-btn__text">Contact sales</span></button>
                 <div class="burger-menu">
-                    <input id="toggle" type="checkbox"></input>
+                    <input id="toggle" type="checkbox">
                     <label for="toggle" class="hamburger">
                         <div class="top-bun"></div>
                         <div class="meat"></div>
@@ -148,7 +148,7 @@
                             <svg class="about-block__item-svg" width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M35.4837 8.67252C37.0945 4.31943 43.2514 4.31944 44.8622 8.67253L51.3058 26.0861C51.8122 27.4547 52.8913 28.5337 54.2599 29.0401L71.6734 35.4837C76.0265 37.0945 76.0265 43.2514 71.6734 44.8622L54.2599 51.3058C52.8913 51.8122 51.8122 52.8913 51.3058 54.2599L44.8622 71.6734C43.2514 76.0265 37.0945 76.0265 35.4837 71.6734L29.0401 54.2599C28.5337 52.8913 27.4546 51.8122 26.0861 51.3058L8.67252 44.8622C4.31943 43.2514 4.31944 37.0945 8.67253 35.4837L26.0861 29.0401C27.4547 28.5337 28.5337 27.4546 29.0401 26.0861L35.4837 8.67252Z" stroke="#FFAA4C" stroke-width="10"/>
                             </svg>                            
-                            <h4 class="about-block__item-header">Contactless</h3>
+                            <h4 class="about-block__item-header">Contactless</h4>
                             <p class="about-block__item-text">
                                 Budss uses near field communication (NFC) for making contactless payments.
                             </p>
@@ -158,7 +158,7 @@
                                 <path d="M35.5379 88.4598C7.13576 78.1294 15.3758 53.6971 38.0364 46.5112C66.3622 37.5288 64.636 73.0225 37.9347 64.1692C-5.4168 49.7953 24.1064 15.7788 46.9658 14.6989" stroke="#A64CED" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
                                 <path d="M38.8147 5.00837L51.5543 10.7312L45.8314 23.4708" stroke="#A64CED" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
-                            <h4 class="about-block__item-header">Increased Buying Power</h3>
+                            <h4 class="about-block__item-header">Increased Buying Power</h4>
                             <p class="about-block__item-text">
                                 Returning customers spend up to 3X more.
                             </p>
@@ -167,7 +167,7 @@
                             <svg class="about-block__item-svg" width="100" height="50" viewBox="0 0 100 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M5.22705 44.1794L23.0731 5.82373L40.9191 44.1794L58.7651 5.82373L76.6111 44.1794L94.4572 5.82373" stroke="#2FDBBC" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>                            
-                            <h4 class="about-block__item-header">Analytics & Insights</h3>
+                            <h4 class="about-block__item-header">Analytics & Insights</h4>
                             <p class="about-block__item-text">
                                 Gain a holistic view into your customers’ buying behavior & purchasing patterns.
                             </p>
@@ -190,14 +190,15 @@
             </div>
         </section>
         <section class="section">
+            <h2 class="section-header visually-hidden">Header</h2>
             <div class="how-works-block">
                 <div class="how-works__phone-block">
                     <div class="phone-border__block">
                         <img src="public/phone-border.png" alt="Phone image" class="how-works__img">
                     </div>
                     <div class="phone-video__block">
-                        <video class="phone-video" autoplay="true" loop="true" muted="true" preload="auto" playsinline="auto">
-                            <source src="public/phone-video.webm" type="video/webm"></source>
+                        <video class="phone-video" autoplay loop muted preload="auto" playsinline>
+                            <source src="public/phone-video.webm" type="video/webm">
                         </video>
                     </div>
                 </div>
@@ -233,15 +234,15 @@
             <div class="purple-block">
                     <ul class="percentage-block__list list-reset">
                         <li class="percentage-block__item">
-                            <h4 class="percentage">15%</h3>
+                            <h4 class="percentage">15%</h4>
                             <span class="percentage__text">Increase in Purchase Amount</span>
                         </li>
                         <li class="percentage-block__item">
-                            <h4 class="percentage">30%</h3>
+                            <h4 class="percentage">30%</h4>
                             <span class="percentage__text">Growth in Annual Sales</span>
                         </li>
                         <li class="percentage-block__item">
-                            <h4 class="percentage">10%</h3>
+                            <h4 class="percentage">10%</h4>
                             <span class="percentage__text">Growth in New Customers</span>
                         </li>
                     </ul>
@@ -262,7 +263,7 @@
                                     </picture>
                                 </div>
                                 <div class="article-text-block">
-                                    <h4 class="article__header">Turn your customers into loyal influencers</h3>
+                                    <h4 class="article__header">Turn your customers into loyal influencers</h4>
                                     <p class="article__text">Budss helps businesses harness the exponential power of loyal customers for acquisition and retention.</p>
                                 </div>
                             </article>
@@ -284,7 +285,7 @@
                                     <img src="public/article-img3.png" alt="Иконка человечка" class="article-img">
                                 </div>
                                 <div class="article-text-block">
-                                    <h4 class="article__header">Supercharge Loyalty With Instant Cash Back</h3>
+                                    <h4 class="article__header">Supercharge Loyalty With Instant Cash Back</h4>
                                     <p class="article__text">Budss allows for shoppers to earn immediate cash back at their favorite stores.</p>
                                 </div>
                             </article>
@@ -293,7 +294,7 @@
                                     <img src="public/article-img4.png" alt="Иконка человечек" class="article-img">
                                 </div>
                                 <div class="article-text-block">
-                                    <h4 class="article__header">Seasoned with AI and Gamification</h3>
+                                    <h4 class="article__header">Seasoned with AI and Gamification</h4>
                                     <p class="article__text">AI programming creates a personalized customer journey, offering recommendations for their next purchase and optimizing rewards for after purchase.</p>
                                 </div>
                             </article>
